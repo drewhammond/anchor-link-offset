@@ -1,4 +1,4 @@
-anchor-heading-offset
+anchor-link-offset
 =====================
 
-WordPress plugin to handle fixed navbars and anchor links (Jump-to heading on same page) 
+WordPress plugin to handle fixed navbars and anchor links (Jump-to heading on same page).
