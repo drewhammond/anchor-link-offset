@@ -1,0 +1,12 @@
+/* This stylesheet is used to style the public-facing components of the plugin. */
+
+.adh-anchor-wrap {
+    display: block;
+    position: relative;
+    z-index: -1;
+}
+.adh-anchor-wrap h1, .adh-anchor-wrap h2, .adh-anchor-wrap h3, .adh-anchor-wrap h4, .adh-anchor-wrap h5, .adh-anchor-wrap h6 {
+    margin-top: -1em;
+    padding-top: 1em;
+    position: relative;
+}
