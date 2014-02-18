@@ -52,6 +52,9 @@ class Anchor_Link_Offset {
 	 */
 	protected static $instance = null;
 
+	// Offset in Px (default)
+	protected static $offsetPx = 100;
+
 	/**
 	 * Initialize the plugin by setting localization and loading public scripts
 	 * and styles.
@@ -73,8 +76,8 @@ class Anchor_Link_Offset {
 		/* Define custom functionality.
 		 * Refer To http://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters
 		 */
-		add_action( '@TODO', array( $this, 'action_method_name' ) );
-		add_filter( '@TODO', array( $this, 'filter_method_name' ) );
+		add_action( 'the_post', array( $this, 'action_method_name' ) );
+		add_filter( 'the_content', array( $this, 'filter_method_name' ) );
 
 	}
 
@@ -284,7 +287,6 @@ class Anchor_Link_Offset {
 	 * @since    1.0.0
 	 */
 	public function action_method_name() {
-		// @TODO: Define your action hook callback here
 	}
 
 	/**
@@ -296,8 +298,35 @@ class Anchor_Link_Offset {
 	 *
 	 * @since    1.0.0
 	 */
-	public function filter_method_name() {
-		// @TODO: Define your filter hook callback here
+	public function filter_method_name($post_content) {
+
+		$wrap['before'] = '<div class="adh-anchor-wrap">';
+		$wrap['after'] = '</div>';
+
+		// Wrap every instance of a hx tag in our own wrapper; @TODO: this is pretty ugly; clean up
+		$pattern = '/(<h[1-6](.*)>(.*)<\/h2>)/';
+		$replacement = $wrap['before'] . '$1' . $wrap['after'];
+
+		$script_append = '
+			<script type="text/javascript">
+				(function ( $ ) {
+					"use strict";
+
+					$(function () {
+						// Override default margins with the offset defined in the configuration
+						var adh_anchor_offset = ' . self::$offsetPx . ';
+						$(".adh-anchor-wrap > h2").css({
+							"margin-top": -adh_anchor_offset,
+							"padding-top": adh_anchor_offset
+						});
+					});
+				}(jQuery));
+			</script>
+		';
+
+		$post_content = preg_replace($pattern, $replacement, $post_content) . $script_append;
+
+		return $post_content;
 	}
 
 }

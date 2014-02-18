@@ -48,21 +48,7 @@ class Anchor_Link_Offset_Admin {
 	private function __construct() {
 
 		/*
-		 * @TODO :
-		 *
-		 * - Uncomment following lines if the admin class should only be available for super admins
-		 */
-		/* if( ! is_super_admin() ) {
-			return;
-		} */
-
-		/*
 		 * Call $plugin_slug from public plugin class.
-		 *
-		 * @TODO:
-		 *
-		 * - Rename "Anchor_Link_Offset" to the name of your initial plugin class
-		 *
 		 */
 		$plugin = Anchor_Link_Offset::get_instance();
 		$this->plugin_slug = $plugin->get_plugin_slug();
@@ -84,8 +70,8 @@ class Anchor_Link_Offset_Admin {
 		 * Read more about actions and filters:
 		 * http://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters
 		 */
-		add_action( '@TODO', array( $this, 'action_method_name' ) );
-		add_filter( '@TODO', array( $this, 'filter_method_name' ) );
+		add_action( 'the_post', array( $this, 'action_method_name' ) );
+		add_filter( 'the_content', array( $this, 'filter_method_name' ) );
 
 	}
 
@@ -185,8 +171,8 @@ class Anchor_Link_Offset_Admin {
 		 *   For reference: http://codex.wordpress.org/Roles_and_Capabilities
 		 */
 		$this->plugin_screen_hook_suffix = add_options_page(
-			__( 'Page Title', $this->plugin_slug ),
-			__( 'Menu Text', $this->plugin_slug ),
+			__( 'Anchor Link Offset Configuration', $this->plugin_slug ),
+			__( 'Anchor Link Offsets', $this->plugin_slug ),
 			'manage_options',
 			$this->plugin_slug,
 			array( $this, 'display_plugin_admin_page' )
@@ -230,6 +216,8 @@ class Anchor_Link_Offset_Admin {
 	 */
 	public function action_method_name() {
 		// @TODO: Define your action hook callback here
+
+		var_dump($this);
 	}
 
 	/**

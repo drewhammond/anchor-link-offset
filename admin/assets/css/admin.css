@@ -1,1 +1,5 @@
 /* This stylesheet is used to style the admin option form of the plugin. */
+
+.adh_offset_px {
+	width: 50px;
+}

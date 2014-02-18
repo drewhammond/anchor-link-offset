@@ -17,6 +17,11 @@
 
 	<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
 
+	<p>The following settings control the positioning and offsets of headline elements within your posts.</p>
+
+	<label for="adh_offset_px">Total offset (px) of fixed navigation</label>
+	<input type="text" name="adh_offset_px" id="adh_offset_px" placeholder="100"> px
+
 	<!-- @TODO: Provide markup for your options page here. -->
 
 </div>

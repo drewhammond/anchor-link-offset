@@ -3,7 +3,8 @@
 
 	$(function () {
 
-		// Place your public-facing JavaScript here
+		// Override default margins with the offset defined in the configuration
+		//$('.adh-anchor-wrap h2').css('color', 'red');
 
 	});
 
