@@ -8,3 +8,8 @@
     padding-top: 1em;
     position: relative;
 }
+
+.adh-anchor-wrap h1 > span, .adh-anchor-wrap h2 > span, .adh-anchor-wrap h3 > span, .adh-anchor-wrap h4 > span, .adh-anchor-wrap h5 > span, .adh-anchor-wrap h6 > span {
+	padding: inherit;
+	margin: inherit;
+}

@@ -216,8 +216,6 @@ class Anchor_Link_Offset_Admin {
 	 */
 	public function action_method_name() {
 		// @TODO: Define your action hook callback here
-
-		var_dump($this);
 	}
 
 	/**
