@@ -304,7 +304,7 @@ class Anchor_Link_Offset {
 		$wrap['after'] = '</div>';
 
 		// Wrap every instance of a hx tag in our own wrapper; @TODO: this is pretty ugly; clean up
-		$pattern = '/(<h[1-6](.*)>(.*)<\/h2>)/';
+		$pattern = '/(<h[1-6](.*)>(.*)<\/h[1-6]>)/';
 		$replacement = $wrap['before'] . '$1' . $wrap['after'];
 
 		$script_append = '
@@ -315,7 +315,7 @@ class Anchor_Link_Offset {
 					$(function () {
 						// Override default margins with the offset defined in the configuration
 						var adh_anchor_offset = ' . self::$offsetPx . ';
-						$(".adh-anchor-wrap > h2").css({
+						$(".adh-anchor-wrap > *").css({
 							"margin-top": -adh_anchor_offset,
 							"padding-top": adh_anchor_offset
 						});
